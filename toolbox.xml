@@ -1,0 +1,26 @@
+<xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none">
+  <category name="Loops">
+    <block type="controls_whileUntil">
+      <field name="MODE">WHILE</field>
+    </block>
+  </category>
+  <category name="Logic">
+    <block type="controls_if"></block>
+    <block type="logic_boolean">
+      <field name="BOOL">TRUE</field>
+    </block>
+  </category>
+  <category name="Boat Orders">
+    <block type="cannon">
+      <field name="Angle Of shoot">90</field>
+      <field name="NAME">0</field>
+    </block>
+    <block type="radar">
+      <field name="Scan direction">60</field>
+    </block>
+    <block type="move">
+      <field name="Angle">90</field>
+      <field name="Distance">0</field>
+    </block>
+  </category>
+</xml>
