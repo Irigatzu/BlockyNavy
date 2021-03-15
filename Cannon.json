@@ -1,0 +1,28 @@
+{
+  "type": "cannon",
+  "message0": "Cannon %1 %2 %3",
+  "args0": [
+    {
+      "type": "field_angle",
+      "name": "Angle Of shoot",
+      "angle": 90
+    },
+    {
+      "type": "field_number",
+      "name": "Distance of shoot",
+      "value": 0,
+      "min": 0,
+      "max": 100
+    },
+    {
+      "type": "input_value",
+      "name": "90"
+    }
+  ],
+  "inputsInline": true,
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": 0,
+  "tooltip": "",
+  "helpUrl": ""
+}
