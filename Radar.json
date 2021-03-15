@@ -1,0 +1,21 @@
+{
+  "type": "radar",
+  "message0": "%1 %2",
+  "args0": [
+    {
+      "type": "field_angle",
+      "name": "Scan direction",
+      "angle": 60
+    },
+    {
+      "type": "input_value",
+      "name": "radar",
+      "check": "Number"
+    }
+  ],
+  "inputsInline": true,
+  "output": "Number",
+  "colour": 60,
+  "tooltip": "Function that scan de distance of an enemy by a giving angle",
+  "helpUrl": ""
+}
