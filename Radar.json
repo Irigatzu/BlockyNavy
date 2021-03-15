@@ -1,6 +1,6 @@
 {
   "type": "radar",
-  "message0": "%1 %2",
+  "message0": "Radar ( %1 ) %2",
   "args0": [
     {
       "type": "field_angle",
@@ -13,7 +13,6 @@
       "check": "Number"
     }
   ],
-  "inputsInline": true,
   "output": "Number",
   "colour": 60,
   "tooltip": "Function that scan de distance of an enemy by a giving angle",
