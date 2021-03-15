@@ -1,0 +1,27 @@
+{
+  "type": "move",
+  "message0": "Move ( %1 , %2 ) %3",
+  "args0": [
+    {
+      "type": "field_angle",
+      "name": "Angle",
+      "angle": 90
+    },
+    {
+      "type": "field_number",
+      "name": "Distance",
+      "value": 0,
+      "min": 0,
+      "max": 100
+    },
+    {
+      "type": "input_value",
+      "name": "Move",
+      "check": "Number"
+    }
+  ],
+  "output": null,
+  "colour": 230,
+  "tooltip": "Move the boat introducing an angle and a distance",
+  "helpUrl": ""
+}
