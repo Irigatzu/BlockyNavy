@@ -1,0 +1,169 @@
+<xml xmlns="https://developers.google.com/blockly/xml"><block type="factory_base" id="1" inline="false" deletable="false" movable="false" x="0" y="0">
+    <mutation connections="BOTH"></mutation>
+    <field name="NAME">Cannon</field>
+    <field name="INLINE">EXT</field>
+    <field name="CONNECTIONS">BOTH</field>
+    <statement name="INPUTS">
+      <block type="input_value" id="6" inline="false">
+        <field name="INPUTNAME">90</field>
+        <field name="ALIGN">LEFT</field>
+        <statement name="FIELDS">
+          <block type="field_static" id="18">
+            <field name="TEXT">Cannon(</field>
+            <next>
+              <block type="field_angle" id="^c?t%JKeLo/a.Yz#[~N=">
+                <field name="ANGLE">90</field>
+                <field name="FIELDNAME">Angle Of shoot</field>
+                <next>
+                  <block type="field_static" id="{Aw1(ykJ/fL9{hE~]]D[">
+                    <field name="TEXT">,</field>
+                    <next>
+                      <block type="field_number" id="2DY8Gi=,[1y1Fn6F_r!^">
+                        <field name="VALUE">0</field>
+                        <field name="FIELDNAME">Distance of shoot</field>
+                        <field name="MIN">0</field>
+                        <field name="MAX">100</field>
+                        <field name="PRECISION">0</field>
+                        <next>
+                          <block type="field_static" id="drfJBVV5O+f{M1AGI^y:">
+                            <field name="TEXT">)</field>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+    <value name="TOPTYPE">
+      <shadow type="type_null" id="S;c]2y{ZD?*oHp{yN0Va"></shadow>
+    </value>
+    <value name="BOTTOMTYPE">
+      <shadow type="type_null" id="UmB)I(N@;%c@Oa_.sG8t"></shadow>
+    </value>
+    <value name="COLOUR">
+      <block type="colour_hue" id="66">
+        <mutation colour="#a55b5b"></mutation>
+        <field name="HUE">0</field>
+      </block>
+    </value>
+  </block><block type="factory_base" id="lm!F9FiLH67`fH~PwHR9" deletable="false" movable="false" x="10" y="10">
+    <mutation connections="LEFT"></mutation>
+    <field name="NAME">Radar</field>
+    <field name="INLINE">AUTO</field>
+    <field name="CONNECTIONS">LEFT</field>
+    <statement name="INPUTS">
+      <block type="input_value" id="PKM8WZH/4*I%Oj=UsjA`">
+        <field name="INPUTNAME">radar</field>
+        <field name="ALIGN">LEFT</field>
+        <statement name="FIELDS">
+          <block type="field_static" id="!FA24RB)_k4u7n0Lg/%m">
+            <field name="TEXT">Radar (</field>
+            <next>
+              <block type="field_angle" id="DC]$-J?|LV)[/Z+$4KaB">
+                <field name="ANGLE">60</field>
+                <field name="FIELDNAME">Scan direction</field>
+                <next>
+                  <block type="field_static" id="KNX`o6LYVEBAW`cFC]zR">
+                    <field name="TEXT">)</field>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <value name="TYPE">
+          <shadow type="type_null" id="zVyDX+y1B_8v7!)tL,[R"></shadow>
+          <block type="type_number" id="=E#eY@)*.32-//)z})Sg"></block>
+        </value>
+      </block>
+    </statement>
+    <value name="TOOLTIP">
+      <block type="text" id="7JXa(nHs`u4e]7H`-~gp" deletable="false" movable="false">
+        <field name="TEXT">Function that scan de distance of an enemy by a giving angle</field>
+      </block>
+    </value>
+    <value name="HELPURL">
+      <block type="text" id="BZS5CB/cpb?f{3==qF2P" deletable="false" movable="false">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+    <value name="OUTPUTTYPE">
+      <shadow type="type_null" id="Ri)Rw6^P48-TLNUK:xot"></shadow>
+      <block type="type_number" id=":#ZV[.KPFk0Bs_C]k`pA"></block>
+    </value>
+    <value name="COLOUR">
+      <block type="colour_hue" id="VC7l?12|7fyDoNRWW,oI">
+        <mutation colour="#a5a55b"></mutation>
+        <field name="HUE">60</field>
+      </block>
+    </value>
+  </block><block type="factory_base" id="#wZoaYF?3y)fS?9Bq*bM" deletable="false" movable="false" x="10" y="10">
+    <mutation connections="LEFT"></mutation>
+    <field name="NAME">Move</field>
+    <field name="INLINE">AUTO</field>
+    <field name="CONNECTIONS">LEFT</field>
+    <statement name="INPUTS">
+      <block type="input_value" id="7K~?bZ~^[vB`-N2f^Ivu">
+        <field name="INPUTNAME">Move</field>
+        <field name="ALIGN">LEFT</field>
+        <statement name="FIELDS">
+          <block type="field_static" id="(_t}*G[(L:BQ$j+gh2V8">
+            <field name="TEXT">Move (</field>
+            <next>
+              <block type="field_angle" id="MlQ/kGwIj,8;`d/l^94+">
+                <field name="ANGLE">90</field>
+                <field name="FIELDNAME">Angle</field>
+                <next>
+                  <block type="field_static" id="nwhiUdtLGE@?IJ(w*P:(">
+                    <field name="TEXT">,</field>
+                    <next>
+                      <block type="field_number" id="~L|@lAZY[g$_aRVK?Jub">
+                        <field name="VALUE">0</field>
+                        <field name="FIELDNAME">Distance</field>
+                        <field name="MIN">0</field>
+                        <field name="MAX">100</field>
+                        <field name="PRECISION">0</field>
+                        <next>
+                          <block type="field_static" id="6Ht(7!B}K87)J4d$Pz6F">
+                            <field name="TEXT">)</field>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <value name="TYPE">
+          <shadow type="type_null" id=";F+16zMIsoxB*1!-S4Q="></shadow>
+          <block type="type_number" id="+d=gTIU%3L:Q5O|_C$D6"></block>
+        </value>
+      </block>
+    </statement>
+    <value name="TOOLTIP">
+      <block type="text" id="by!Wj}Y-m3vq)(.h-ZS@" deletable="false" movable="false">
+        <field name="TEXT">Move the boat introducing an angle and a distance</field>
+      </block>
+    </value>
+    <value name="HELPURL">
+      <block type="text" id="1ICYe0$eU$_[rXEjLm0Y" deletable="false" movable="false">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+    <value name="OUTPUTTYPE">
+      <shadow type="type_null" id="X??j:vf50u6DxO}8]0!z"></shadow>
+    </value>
+    <value name="COLOUR">
+      <block type="colour_hue" id="Mqx;tcmv%UoE+FN:.1r0">
+        <mutation colour="#5b67a5"></mutation>
+        <field name="HUE">230</field>
+      </block>
+    </value>
+  </block></xml>
