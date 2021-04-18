@@ -1,4 +1,6 @@
-﻿<html lang="en">
+<!DOCTYPE html>
+
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,11 +9,44 @@
     <style>
       #gameScreen {
         border: 1px solid black;
+        background-color: aquamarine;
+      }
+      img {
+        display: none;
       }
     </style>
   </head>
-  <body>
+  
+  
+  
+  <body mode ="play">
+    <header class="mdl-color--cyan-500">
+       
+    </header>
+    <main>
+    <button class="blocklyDiv" id="edit">Edit</button>
+    <img id="img_boat" src="Assets/ship1.png" />
     <canvas id="gameScreen" width="600" height="600"></canvas>
-    <script src="src/index.js"></script>
+    <div class="blockly-editor">
+    
+      <div id="blocklyDiv" style=" top: 600px; left: 650px;height: 500px; width: 400px;"></div>
+              <xml id="toolbox" style="display: any">
+            <block type="controls_repeat_ext">
+            <value name="TIMES">
+              <shadow type="math_number">
+                <field name="NUM">5</field>
+              </shadow>
+            </value>
+          </block>
+        </xml>
+    </div>
+    <script src="src/game.js"></script>
+    <script src="https://unpkg.com/blockly"></script>
+    <script src="scripts/main.js"></script>
+    <script>
+  var workspace = Blockly.inject('blocklyDiv',
+      {toolbox: document.getElementById('toolbox')});
+</script>
+    
   </body>
 </html>
