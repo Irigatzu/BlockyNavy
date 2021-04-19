@@ -12,7 +12,10 @@
         background-color: aquamarine;
       }
       #blocklyDiv{
-      float: right;
+      position: absolute;
+      top: 8px;
+      right: 400px;
+      font-size: 18px;
 
       }
       img {
@@ -28,14 +31,14 @@
        
     </header>
     <main>
-    <script src="Blocky/Cannon.json"></script>
-    <script src="Blocky/Move.json"></script>
-    <script src="Blocky/Radar.json"></script>
+    <script src="Blocky/cannon.json"></script>
+    <script src="Blocky/move.json"></script>
+    <script src="Blocky/radar.json"></script>
     <img id="img_boat" src="Assets/ship1.png" />
     <canvas id="gameScreen" float ="left" width="600" height="600"></canvas>
     <div class="blockly-editor">
     
-      <div id="blocklyDiv" style=";height: 300px; width: 800px;"></div>
+      <div id="blocklyDiv" style=":0px ;height: 800px; width: 800px;"></div>
              <xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none">
                   <category name="Loops">
                     <block type="controls_whileUntil">
@@ -66,9 +69,7 @@
     <script src="src/game.js"></script>
     <script src="https://unpkg.com/blockly"></script>
     <script src="scripts/main.js"></script>
-    <script src="Blocky/Cannon.json"></script>
-    <script src="Blocky/Move.json"></script>
-    <script src="Blocky/Radar.json"></script>
+    
     <script>
   var workspace = Blockly.inject('blocklyDiv',
       {toolbox: document.getElementById('toolbox')});
