@@ -28,24 +28,47 @@
        
     </header>
     <main>
+    <script src="Blocky/Cannon.json"></script>
+    <script src="Blocky/Move.json"></script>
+    <script src="Blocky/Radar.json"></script>
     <img id="img_boat" src="Assets/ship1.png" />
     <canvas id="gameScreen" float ="left" width="600" height="600"></canvas>
     <div class="blockly-editor">
     
       <div id="blocklyDiv" style=";height: 300px; width: 800px;"></div>
-              <xml id="toolbox" style="display: any">
-            <block type="controls_repeat_ext">
-            <value name="TIMES">
-              <shadow type="math_number">
-                <field name="NUM"></field>
-              </shadow>
-            </value>
-          </block>
-        </xml>
+             <xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none">
+                  <category name="Loops">
+                    <block type="controls_whileUntil">
+                      <field name="MODE">WHILE</field>
+                    </block>
+                  </category>
+                  <category name="Logic">
+                    <block type="controls_if"></block>
+                    <block type="logic_boolean">
+                      <field name="BOOL">TRUE</field>
+                    </block>
+                  </category>
+                  <category name="Boat Orders">
+                    <block type="cannon">
+                      <field name="Angle Of shoot">90</field>
+                      <field name="NAME">0</field>
+                    </block>
+                    <block type="radar">
+                      <field name="Scan direction">60</field>
+                    </block>
+                    <block type="move">
+                      <field name="Angle">90</field>
+                      <field name="Distance">0</field>
+                    </block>
+                  </category>
+             </xml>
     </div>
     <script src="src/game.js"></script>
     <script src="https://unpkg.com/blockly"></script>
     <script src="scripts/main.js"></script>
+    <script src="Blocky/Cannon.json"></script>
+    <script src="Blocky/Move.json"></script>
+    <script src="Blocky/Radar.json"></script>
     <script>
   var workspace = Blockly.inject('blocklyDiv',
       {toolbox: document.getElementById('toolbox')});
