@@ -3,10 +3,11 @@
     "",
     "\\.codesandbox",
     "\\Assets",
+    "\\Blocks",
     "\\Blocky",
     "\\scripts",
     "\\src"
   ],
-  "SelectedNode": "\\Blocky\\Cannon.json",
+  "SelectedNode": "\\src\\game.js",
   "PreviewInSolutionExplorer": false
 }

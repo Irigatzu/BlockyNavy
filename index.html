@@ -2,6 +2,7 @@
 
 
 <html lang="en">
+
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -20,7 +21,7 @@
 
       }
       img {
-       display:none
+       display
       }
     </style>
   </head>
@@ -34,6 +35,8 @@
     <main>
     <img id="img_boat" src="Assets/ship1.png" />
     <canvas id="gameScreen" float ="left" width="600" height="600"></canvas>
+    <script src="src/game.js"></script>
+
     <div class="blockly-editor">
     
       <div id="blocklyDiv" style=":0px ;height: 800px; width: 800px;"></div>
@@ -64,9 +67,8 @@
                   </category>
              </xml>
     </div>
-    <script src="src/game.js"></script>
+    
     <script src="https://unpkg.com/blockly"></script>
-    <script src="scripts/main.js"></script>
     
     <script>
         var workspace = Blockly.inject('blocklyDiv',
@@ -78,6 +80,7 @@
     <script src="Blocks/string_length.js"></script>
     <script src="Blocky/Move.js"></script>
     <script src="Blocky/Radar.js"></script>
+    
     
   </body>
 </html>
