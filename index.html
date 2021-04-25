@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 
+
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -27,13 +28,10 @@
   
   
   <body mode ="play">
-    <header class="mdl-color--cyan-500">
+    
        
     </header>
     <main>
-    <script src="Blocky/cannon.json"></script>
-    <script src="Blocky/move.json"></script>
-    <script src="Blocky/radar.json"></script>
     <img id="img_boat" src="Assets/ship1.png" />
     <canvas id="gameScreen" float ="left" width="600" height="600"></canvas>
     <div class="blockly-editor">
@@ -52,14 +50,14 @@
                     </block>
                   </category>
                   <category name="Boat Orders">
-                    <block type="cannon">
+                    <block type="Cannon">
                       <field name="Angle Of shoot">90</field>
                       <field name="NAME">0</field>
                     </block>
-                    <block type="radar">
+                    <block type="Radar">
                       <field name="Scan direction">60</field>
                     </block>
-                    <block type="move">
+                    <block type="Move">
                       <field name="Angle">90</field>
                       <field name="Distance">0</field>
                     </block>
@@ -71,9 +69,15 @@
     <script src="scripts/main.js"></script>
     
     <script>
-  var workspace = Blockly.inject('blocklyDiv',
-      {toolbox: document.getElementById('toolbox')});
-</script>
+        var workspace = Blockly.inject('blocklyDiv',
+        {toolbox: document.getElementById('toolbox')});
+       
+    </script>
+
+    <script src="Blocky/Cannon.js"></script>
+    <script src="Blocks/string_length.js"></script>
+    <script src="Blocky/Move.js"></script>
+    <script src="Blocky/Radar.js"></script>
     
   </body>
 </html>

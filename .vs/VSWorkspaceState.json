@@ -1,10 +1,12 @@
 {
   "ExpandedNodes": [
     "",
+    "\\.codesandbox",
+    "\\Assets",
     "\\Blocky",
     "\\scripts",
     "\\src"
   ],
-  "SelectedNode": "\\index.html",
+  "SelectedNode": "\\Blocky\\Cannon.json",
   "PreviewInSolutionExplorer": false
 }
