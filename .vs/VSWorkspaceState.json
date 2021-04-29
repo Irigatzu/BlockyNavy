@@ -3,11 +3,9 @@
     "",
     "\\.codesandbox",
     "\\Assets",
-    "\\Blocks",
-    "\\Blocky",
     "\\scripts",
     "\\src"
   ],
-  "SelectedNode": "\\src\\game.js",
+  "SelectedNode": "\\style.css",
   "PreviewInSolutionExplorer": false
 }
