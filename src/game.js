@@ -14,6 +14,8 @@ const GAME_HEIGTH = 600;
             this.width = 80;
             this.height = 80;
             this.maxSpeed = 2;
+            
+            
             this.position = {
               x: x,
               y: y
@@ -23,24 +25,46 @@ const GAME_HEIGTH = 600;
               x: 0,
               y: 0
             };
+             this.startpos = {
+              x: this.position.x,
+              y: this.position.y
+            
+            };
+            this.finalpos = {
+                x:0,
+                y: 0
+            };
+            
+           
           }
           move(angle, distance) {
             var pi = Math.PI;
-            var oldpos = {
-              x: this.position.x,
-              y: this.position.y
-            };
+            this.finalpos.x = this.startpos.x + Math.cos(angle * (pi / 180)) *distance;
+            this.finalpos.y = this.startpos.y +Math.sin(angle * -(pi / 180)) *distance;
+           
+           
+            
+            
+            if(this.position.x!=this.finalpos.x||this.position.y!=this.finalpos.y){
+            this.speed.x = Math.cos(angle * (pi / 180)) * this.maxSpeed;
+            this.speed.y = Math.sin(angle * -(pi / 180)) * this.maxSpeed;
+             }else{
+             this.speed.x=0;
+             this.speed.y=0;
+             }
+                
+                
+                  
+                  
+             
+           
+           
+           console.log(this.finalpos)
+           
+          }
+          cannon(angle, distance){
+          var pi = Math.PI;
 
-            this.speed.x = Math.cos(angle * (pi / 180)) * distance;
-            this.speed.y = Math.sin(angle * -(pi / 180)) * distance;
-            /*if (
-              this.speed.x + oldpos.x === this.position.x ||
-              this.speed.y + oldpos.y === this.position.y
-            ) {
-              this.speed.x = 0;
-              this.speed.y = 0;
-            }
-            */
           }
 
           draw(ctx) {
@@ -65,7 +89,10 @@ const GAME_HEIGTH = 600;
               this.position.x += this.speed.x;
               this.position.y += this.speed.y;
             }
+           
+           
           }
+          
         }
 
 const player = new Player(200, 200);
@@ -73,12 +100,13 @@ const player = new Player(200, 200);
 let lastTime = 0;
 
 function gameLoop(timestamp) {
-  let deltaTime = timestamp - lastTime;
+  var deltaTime = timestamp - lastTime;
   lastTime = timestamp;
   ctx.clearRect(0, 0, GAME_WIDTH, GAME_HEIGTH);
   player.update(deltaTime);
   player.draw(ctx);
-  player.move(90, 2);
+  player.move(45, 50);
+  player.cannon(30,0);
   requestAnimationFrame(gameLoop);
 }
 gameLoop();
