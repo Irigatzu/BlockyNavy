@@ -23,19 +23,26 @@
       img {
        display:none
       }
+      #play{
+            position: absolute;
+            top: 700px;
+      }
     </style>
   </head>
   
   
   
-  <body mode ="play">
+  <body>
     
        
     </header>
     <main>
+    <button id="play" type="button" onclick="alert('Hello world!')">Play</button>
+    <button id="codeshow" type="button" onclick="showCode()">Show Code</button>
     <img id="img_boat" src="Assets/ship1.png" />
-    <img id="img_ball" src="Assets/sphere.png"
+    <img id="img_ball" src="Assets/sphere.png"/>
     <canvas id="gameScreen" float ="left" width="600" height="600"></canvas>
+    
     <script src="src/game.js"></script>
 
     <div class="blockly-editor">
@@ -74,6 +81,13 @@
     <script>
         var workspace = Blockly.inject('blocklyDiv',
         {toolbox: document.getElementById('toolbox')});
+
+        function showCode() {
+      // Generate JavaScript code and display it.
+      Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
+      var code = Blockly.JavaScript.workspaceToCode(blocklyDiv);
+      alert(code);
+    }
        
     </script>
 

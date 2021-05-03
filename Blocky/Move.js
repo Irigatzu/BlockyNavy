@@ -14,3 +14,11 @@ Blockly.Blocks['Move'] = {
  this.setHelpUrl("");
   }
 };
+Blockly.JavaScript['move'] = function(block) {
+  var angle_angle = block.getFieldValue('Angle');
+  var number_distance = block.getFieldValue('Distance');
+  var value_move = Blockly.JavaScript.valueToCode(block, 'Move', Blockly.JavaScript.ORDER_ATOMIC);
+  // TODO: Assemble JavaScript into code variable.
+  var code = 'Move('+angle_angle+','+number_distance+')';
+  return code;
+};

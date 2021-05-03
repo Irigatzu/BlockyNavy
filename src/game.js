@@ -59,7 +59,7 @@ const GAME_HEIGTH = 600;
              
            
            
-           console.log(this.finalpos)
+           
            
           }
           cannon(angle, distance){
@@ -94,6 +94,9 @@ const GAME_HEIGTH = 600;
           }
           
         }
+        class Ball{
+
+        }
 
 const player = new Player(200, 200);
 
@@ -105,7 +108,7 @@ function gameLoop(timestamp) {
   ctx.clearRect(0, 0, GAME_WIDTH, GAME_HEIGTH);
   player.update(deltaTime);
   player.draw(ctx);
-  player.move(45, 50);
+  player.move(40, 50);
   player.cannon(30,0);
   requestAnimationFrame(gameLoop);
 }
