@@ -7,6 +7,12 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Blocky Navy</title>
+
+     <script src="Blocky/blockly_compressed.js"></script>
+     <script src="Blocky/blocks_compressed.js"></script>
+     <script src="Blocky/javascript_compressed.js"></script>
+     <script src="Blocky/en.js"></script>
+
     <link rel="stylesheet" href="src/styles.css" />
     <style>
       #gameScreen {
@@ -75,9 +81,6 @@
                   </category>
              </xml>
     </div>
-    
-    <script src="https://unpkg.com/blockly"></script>
-    
     <script>
         var workspace = Blockly.inject('blocklyDiv',
         {toolbox: document.getElementById('toolbox')});
@@ -90,7 +93,8 @@
     }
        
     </script>
-
+    
+   
     <script src="Blocky/Cannon.js"></script>
     <script src="Blocks/string_length.js"></script>
     <script src="Blocky/Move.js"></script>
