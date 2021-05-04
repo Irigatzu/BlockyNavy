@@ -3,9 +3,10 @@
     "",
     "\\.codesandbox",
     "\\Assets",
+    "\\Blocky",
     "\\scripts",
     "\\src"
   ],
-  "SelectedNode": "\\src\\player.js",
+  "SelectedNode": "\\Blocky",
   "PreviewInSolutionExplorer": false
 }
