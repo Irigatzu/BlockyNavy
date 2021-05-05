@@ -14,7 +14,7 @@ Blockly.Blocks['Move'] = {
  this.setHelpUrl("");
   }
 };
-Blockly.JavaScript['move'] = function(block) {
+Blockly.JavaScript['Move'] = function(block) {
   var angle_angle = block.getFieldValue('Angle');
   var number_distance = block.getFieldValue('Distance');
   var value_move = Blockly.JavaScript.valueToCode(block, 'Move', Blockly.JavaScript.ORDER_ATOMIC);

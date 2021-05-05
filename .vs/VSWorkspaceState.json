@@ -3,10 +3,10 @@
     "",
     "\\.codesandbox",
     "\\Assets",
-    "\\Blocky",
+    "\\Blocks",
     "\\scripts",
     "\\src"
   ],
-  "SelectedNode": "\\Blocky",
+  "SelectedNode": "\\Blocks\\Move.js",
   "PreviewInSolutionExplorer": false
 }
