@@ -7,6 +7,8 @@
   <script src="blocks_compressed.js"></script>
   <script src="javascript_compressed.js"></script>
   <script src="msg/js/en.js"></script>
+  <script src="acorn.js"></script>
+    <script src="interpreter.js"></script>
   <style>
     body {
       background-color: #fff;
@@ -30,14 +32,10 @@
       img {
        display:none
       }
-      #play1{
+      #codeSsow{
             position:absolute;
-            top: 100px;
-            left: 620px;
-      }#codeshow{
-            position:absolute;
-            top: 120px;
-            left: 620px;
+            top: 600px;
+            left: 680px;
       }
       #healthCanvas{
             position: absolute ;
@@ -56,8 +54,9 @@
     <script src="src/healthLogic.js"></script>
     <script src="src/game.js"></script>
   <p>
-    <button id="play1" onclick="showCode()">Show JavaScript</button>
-    <button id="codeShow" onclick="runCode()">Run JavaScript</button>
+    <button id="play1" onclick="showCode()">Show the code</button>
+    <button id="codeShow" onclick="runCode()">Play</button>
+    <button id="restart" onclick="restart()">Restart</button>
   </p>
 
   <div id="blocklyDiv" style="height: 480px; width: 600px;"></div>
@@ -97,6 +96,7 @@
     <script src="Blocks/string_length.js"></script>
     <script src="Blocks/Move.js"></script>
     <script src="Blocks/Radar.js"></script>
+    
   <script>
     var demoWorkspace = Blockly.inject('blocklyDiv',
         {media: '../../media/',
@@ -106,7 +106,7 @@
       // Generate JavaScript code and display it.
       Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
       var code = Blockly.JavaScript.workspaceToCode(demoWorkspace);
-      alert(code);
+      gameState="PLAY";
     }
 
     function runCode() {
@@ -116,11 +116,37 @@
           'if (--window.LoopTrap == 0) throw "Infinite loop.";\n';
       var code = Blockly.JavaScript.workspaceToCode(demoWorkspace);
       Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
+       //var code = 'player.move(0,100)';
+            var initFunc = function(interpreter, globalObject) {
+          // Create 'robot' global object.
+          var player = interpreter.nativeToPseudo({});
+          interpreter.setProperty(globalObject, 'player', player);
+
+          // Define 'player.angle' and distance property.
+          interpreter.setProperty(player, 'angle', 360);
+          interpreter.setProperty(player, 'distance', 200);
+
+          // Define 'robot.forwards' function.
+          var wrapper = function move(angle,distance) {
+            return realPlayer.move(angle,distance);
+          };
+          interpreter.setProperty(player, 'move',
+              interpreter.createNativeFunction(wrapper));
+            };
+    var myInterpreter = new Interpreter(code, initFunc);
+    
       try {
-        eval(code);
+      
+     myInterpreter.run();
+      
       } catch (e) {
         alert(e);
       }
+    }
+    function restart(){
+       gameState="STOP";
+       gameLoop(0);
+       
     }
   </script>
 

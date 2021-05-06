@@ -1,10 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\.codesandbox",
     "\\Assets",
     "\\Blocks",
-    "\\scripts",
     "\\src"
   ],
   "SelectedNode": "\\Blocks\\Move.js",

@@ -2,10 +2,14 @@
 const canvas = document.getElementById("gameScreen");
 const ctx = canvas.getContext("2d");
 
-ctx.fillStyle = "blue";
+ctx.fillStyle = "aquamarine";
 ctx.fillRect(0, 0, 600, 600);
 const GAME_WIDTH = 600;
 const GAME_HEIGTH = 600;
+
+
+
+
 
 
          class Player {
@@ -66,6 +70,32 @@ const GAME_HEIGTH = 600;
           var pi = Math.PI;
 
           }
+          restart(){
+              this.image = document.getElementById("img_boat");
+                this.width = 80;
+                this.height = 80;
+                this.maxSpeed = 2;
+            
+            
+                this.position = {
+                  x: 200,
+                  y: 200
+                };
+
+                this.speed = {
+                  x: 0,
+                  y: 0
+                };
+                 this.startpos = {
+                  x: this.position.x,
+                  y: this.position.y
+            
+                };
+                this.finalpos = {
+                    x:0,
+                    y: 0
+                };
+          }
 
           draw(ctx) {
             ctx.drawImage(
@@ -97,20 +127,34 @@ const GAME_HEIGTH = 600;
         class Ball{
 
         }
+var gameState ="PLAY";
 
-const player = new Player(200, 200);
-
-let lastTime = 0;
-
+        const realPlayer = new Player(200, 200);
+var lastTime = 0;
 function gameLoop(timestamp) {
-  var deltaTime = timestamp - lastTime;
-  lastTime = timestamp;
-  ctx.clearRect(0, 0, GAME_WIDTH, GAME_HEIGTH);
-  player.update(deltaTime);
-  player.draw(ctx);
-  player.move(40, 50);
-  player.cannon(30,0);
-  requestAnimationFrame(gameLoop);
+    if(gameState=="PLAY"){
+      var deltaTime = timestamp - lastTime;
+      lastTime = timestamp;
+      ctx.clearRect(0, 0, GAME_WIDTH, GAME_HEIGTH);
+      realPlayer.update(deltaTime);
+      realPlayer.draw(ctx);
+ 
+    
+          
+ 
+  
+      console.log(gameState);
+      requestAnimationFrame(gameLoop);
+      }
+      else{ 
+      realPlayer.restart();
+      gameState="PLAY";
+      return;
+      }
 }
-gameLoop();
-console.log(player);
+
+
+
+
+
+      gameLoop();

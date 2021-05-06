@@ -19,6 +19,6 @@ Blockly.JavaScript['Move'] = function(block) {
   var number_distance = block.getFieldValue('Distance');
   var value_move = Blockly.JavaScript.valueToCode(block, 'Move', Blockly.JavaScript.ORDER_ATOMIC);
   // TODO: Assemble JavaScript into code variable.
-  var code = 'Move('+angle_angle+','+number_distance+')';
+  var code = 'player.move('+angle_angle+','+number_distance+');';
   return code;
 };
