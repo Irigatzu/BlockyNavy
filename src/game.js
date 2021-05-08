@@ -1,135 +1,22 @@
 
 const canvas = document.getElementById("gameScreen");
 const ctx = canvas.getContext("2d");
+var playerImage=document.getElementById("img_boat");
 
+var enemyImage=document.getElementById("enemy_boat");
+var ballImage=document.getElementById("ballImage");
 ctx.fillStyle = "aquamarine";
 ctx.fillRect(0, 0, 600, 600);
 const GAME_WIDTH = 600;
 const GAME_HEIGTH = 600;
 
-
-
-
-
-
-         class Player {
-          constructor(x, y) {
-            this.image = document.getElementById("img_boat");
-            this.width = 80;
-            this.height = 80;
-            this.maxSpeed = 2;
-            
-            
-            this.position = {
-              x: x,
-              y: y
-            };
-
-            this.speed = {
-              x: 0,
-              y: 0
-            };
-             this.startpos = {
-              x: this.position.x,
-              y: this.position.y
-            
-            };
-            this.finalpos = {
-                x:0,
-                y: 0
-            };
-            
-           
-          }
-          move(angle, distance) {
-            var pi = Math.PI;
-            this.finalpos.x = this.startpos.x + Math.cos(angle * (pi / 180)) *distance;
-            this.finalpos.y = this.startpos.y +Math.sin(angle * -(pi / 180)) *distance;
-           
-           
-            
-            
-            if(this.position.x!=this.finalpos.x||this.position.y!=this.finalpos.y){
-            this.speed.x = Math.cos(angle * (pi / 180)) * this.maxSpeed;
-            this.speed.y = Math.sin(angle * -(pi / 180)) * this.maxSpeed;
-             }else{
-             this.speed.x=0;
-             this.speed.y=0;
-             }
-                
-                
-                  
-                  
-             
-           
-           
-           
-           
-          }
-          cannon(angle, distance){
-          var pi = Math.PI;
-
-          }
-          restart(){
-              this.image = document.getElementById("img_boat");
-                this.width = 80;
-                this.height = 80;
-                this.maxSpeed = 2;
-            
-            
-                this.position = {
-                  x: 200,
-                  y: 200
-                };
-
-                this.speed = {
-                  x: 0,
-                  y: 0
-                };
-                 this.startpos = {
-                  x: this.position.x,
-                  y: this.position.y
-            
-                };
-                this.finalpos = {
-                    x:0,
-                    y: 0
-                };
-          }
-
-          draw(ctx) {
-            ctx.drawImage(
-              this.image,
-              this.position.x,
-              this.position.y,
-              this.height,
-              this.width
-            );
-          }
-          update(deltaTime) {
-            if (
-              this.position.x >= 530 ||
-              this.position.y >= 530 ||
-              this.position.x <= 30 ||
-              this.position.y <= 30
-            ) {
-              this.speed.x = 0;
-              this.speed.y = 0;
-            } else {
-              this.position.x += this.speed.x;
-              this.position.y += this.speed.y;
-            }
-           
-           
-          }
-          
-        }
-        class Ball{
-
-        }
 var gameState ="PLAY";
-
-        const realPlayer = new Player(200, 200);
+        
+        const realPlayer = new Player(200, 200,playerImage );
+        const enemyPlayer =new Player(300,200,enemyImage);
+        var ball=new Ball(realPlayer);
+        
+        
 var lastTime = 0;
 function gameLoop(timestamp) {
     if(gameState=="PLAY"){
@@ -138,16 +25,27 @@ function gameLoop(timestamp) {
       ctx.clearRect(0, 0, GAME_WIDTH, GAME_HEIGTH);
       realPlayer.update(deltaTime);
       realPlayer.draw(ctx);
- 
+     enemyPlayer.update(deltaTime);
+     enemyPlayer.draw(ctx);
+     enemyPlayer.move(0,20);
+     ball.update(deltaTime);
+     ball.draw(ctx);
+     ball.move(270,300);
+    
+              
+              
+    
+    
     
           
  
   
-      console.log(gameState);
+      
       requestAnimationFrame(gameLoop);
       }
       else{ 
-      realPlayer.restart();
+      realPlayer.restart(realPlayer,200,200);
+      enemyPlayer.restart(enemyPlayer,300,300);
       gameState="PLAY";
       return;
       }

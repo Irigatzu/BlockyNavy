@@ -1,16 +1,5 @@
 Blockly.Blocks['Cannon'] = {
   init: function() {
-    /*this.appendValueInput("90")
-        .appendField("Cannon(")
-        .appendField(new Blockly.FieldAngle(90), "Angle Of shoot")
-        .appendField(",")
-        .appendField(new Blockly.FieldNumber(0, 0, 100), "Distance of shoot")
-        .appendField(")");
-    this.setInputsInline(false);
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setColour(0);
-    */
      this.appendValueInput("Cannon")
         .setCheck("Number")
         .appendField("Cannon (")
@@ -33,6 +22,6 @@ Blockly.JavaScript['Cannon'] = function(block) {
   var number_distance = block.getFieldValue('Distance');
   var value_move = Blockly.JavaScript.valueToCode(block, 'Cannon', Blockly.JavaScript.ORDER_ATOMIC);
   // TODO: Assemble JavaScript into code variable.
-  var code = 'Cannon('+angle_angle+','+number_distance+')';
+  var code = 'ball.move('+angle_angle+','+number_distance+')';
   return code;
 };

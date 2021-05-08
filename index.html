@@ -46,13 +46,17 @@
 </head>
 <body>
     <img id="img_boat" src="Assets/ship1.png" />
+    <img id ="enemy_boat" src="Assets/EnemyShip.png"/>
+    <img id ="ballImage" src="Assets/ball.png"/>
     
     <canvas id="gameScreen" float ="left" width="600" height="600"></canvas>
     <canvas id ="healthCanvas" width= "400" height="400"></canvas>
-
+    <script src="src/player.js"></script>
+    <script src="src/ball.js"></script>
     <script src="src/healthBar.js"></script>
     <script src="src/healthLogic.js"></script>
     <script src="src/game.js"></script>
+    
   <p>
     <button id="play1" onclick="showCode()">Show the code</button>
     <button id="codeShow" onclick="runCode()">Play</button>
@@ -106,7 +110,7 @@
       // Generate JavaScript code and display it.
       Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
       var code = Blockly.JavaScript.workspaceToCode(demoWorkspace);
-      gameState="PLAY";
+      alert(code);
     }
 
     function runCode() {
