@@ -1,5 +1,6 @@
    class Ball{
          constructor(player){
+                this.player=player;
                this.image=ballImage;
                this.width = 0;
                 this.height = 0;
@@ -79,8 +80,8 @@
                 this.height = 0;
                 this.maxSpeed = 1;
                 this.position = {
-                 x:this.x,
-                  y:this.y
+                 x:this.player.getPositionX()+30,
+                  y:this.player.getPositionY()+30
                 };
                 this.speed = {
                   x: 0,

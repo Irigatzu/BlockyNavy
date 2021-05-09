@@ -17,10 +17,14 @@ class HealthBar {
 		context.strokeRect(this.x,this.y,this.maxWidth,this.h);
 	}
 	updateHealth(damage){
-	if(this.health>0){
-	this.health =this.health-damage;
-	this.w=(this.health/this.maxhealth)*this.maxWidth
-	}
+		if(this.health>0){
+		this.health =this.health-damage;
+		this.w=(this.health/this.maxhealth)*this.maxWidth
+		}
+	
+	}reset(){
+		this.health=this.maxhealth;
+		this.w=(this.health/this.maxhealth)*this.maxWidth
 
 	}
 }

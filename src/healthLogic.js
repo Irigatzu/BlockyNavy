@@ -3,8 +3,8 @@ const canvas2=document.getElementById("healthCanvas");
     const width=canvas2.width;
     const height= canvas2.height;
 
-    const playerHealthBar =new HealthBar(10,10,200,30,100,"green");
-    const enemyHealthBar =new HealthBar(215,10,200,30,100,"red");
+    var playerHealthBar =new HealthBar(10,10,200,30,100,"green");
+    var enemyHealthBar =new HealthBar(215,10,200,30,100,"red");
 
     const frame=function(){
         context.clearRect(0,0,600,400);
@@ -14,8 +14,9 @@ const canvas2=document.getElementById("healthCanvas");
     }
     function hit(HealthBar){
     
-    enemyHealthBar.updateHealth(10);
+    HealthBar.updateHealth(10);
     }
+    
     frame();
 
     
