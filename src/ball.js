@@ -42,7 +42,7 @@
              }else{
              this.speed.x=0;
              this.speed.y=0;
-             this.reset(this);
+             this.reset();
              }
                 
            
@@ -72,14 +72,14 @@
               this.position.y += this.speed.y;
             }
          }
-         reset(ball){
+         reset(){
                this.image=ballImage;
                 this.width = 0;
                 this.height = 0;
                 this.maxSpeed = 1;
                 this.position = {
-                 x:ball.x,
-                  y:ball.y
+                 x:this.x,
+                  y:this.y
                 };
                 this.speed = {
                   x: 0,
@@ -94,6 +94,12 @@
                     x:0,
                     y: 0
                 };
+         }
+         getPositionX(){
+              return this.position.x;
+         }
+         getPositionY(){
+              return this.position.y;
          }
            
    }

@@ -97,6 +97,12 @@ class Player {
            
            
           }
+          getPositionX(){
+              return this.position.x;
+          }
+          getPositionY(){
+            return this.position.y;
+          }
           
         }
 

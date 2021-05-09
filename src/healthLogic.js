@@ -7,9 +7,15 @@ const canvas2=document.getElementById("healthCanvas");
     const enemyHealthBar =new HealthBar(215,10,200,30,100,"red");
 
     const frame=function(){
-        context.clearRect(0,0,320,480);
+        context.clearRect(0,0,600,400);
         playerHealthBar.show(context);
         enemyHealthBar.show(context);
         requestAnimationFrame(frame);
     }
+    function hit(HealthBar){
+    
+    enemyHealthBar.updateHealth(10);
+    }
     frame();
+
+    

@@ -18,6 +18,13 @@ var gameState ="PLAY";
         
         
 var lastTime = 0;
+function colision(ball,player,healthbar){
+    if(ball.getPositionX()==player.getPositionX()||ball.getPositionY()==player.getPositionY()){
+        ball.reset();
+        hit(healthbar);
+    }
+}
+
 function gameLoop(timestamp) {
     if(gameState=="PLAY"){
       var deltaTime = timestamp - lastTime;
@@ -30,18 +37,10 @@ function gameLoop(timestamp) {
      enemyPlayer.move(0,20);
      ball.update(deltaTime);
      ball.draw(ctx);
-     ball.move(270,300);
-    
-              
-              
-    
-    
-    
-          
- 
-  
-      
+     ball.move(0,300);
+     colision(ball,enemyPlayer,enemyHealthBar);
       requestAnimationFrame(gameLoop);
+      
       }
       else{ 
       realPlayer.restart(realPlayer,200,200);

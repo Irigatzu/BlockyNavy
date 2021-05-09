@@ -10,10 +10,17 @@ class HealthBar {
 		this.color=color;
 	}
 	show(context){
-		context.lineWith=5;
+		context.lineWidth=4;
 		context.stroleStyle="#333";
 		context.fillStyle=this.color;
 		context.fillRect(this.x,this.y,this.w,this.h);
-		context.strokeRect(this.x,this.y,this.maxwidth,this.h);
+		context.strokeRect(this.x,this.y,this.maxWidth,this.h);
+	}
+	updateHealth(damage){
+	if(this.health>0){
+	this.health =this.health-damage;
+	this.w=(this.health/this.maxhealth)*this.maxWidth
+	}
+
 	}
 }
