@@ -119,22 +119,31 @@
       Blockly.JavaScript.INFINITE_LOOP_TRAP =
           'if (--window.LoopTrap == 0) throw "Infinite loop.";\n';
       var code = Blockly.JavaScript.workspaceToCode(demoWorkspace);
-      Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
+      Blockly.JavaScript.INFINITE_LOOP_TRAP = 10;
        //var code = 'player.move(0,100)';
             var initFunc = function(interpreter, globalObject) {
           // Create 'robot' global object.
           var player = interpreter.nativeToPseudo({});
+          var ball = interpreter.nativeToPseudo({});
           interpreter.setProperty(globalObject, 'player', player);
+          interpreter.setProperty(globalObject, 'ball', ball);
 
           // Define 'player.angle' and distance property.
           interpreter.setProperty(player, 'angle', 360);
           interpreter.setProperty(player, 'distance', 200);
+          interpreter.setProperty(ball, 'angle', 360);
+          interpreter.setProperty(ball, 'distance', 200);
 
           // Define 'robot.forwards' function.
           var wrapper = function move(angle,distance) {
             return realPlayer.move(angle,distance);
           };
+          var wrapper = function move(angle,distance) {
+            return playerBall.move(angle,distance);
+          };
           interpreter.setProperty(player, 'move',
+              interpreter.createNativeFunction(wrapper));
+          interpreter.setProperty(ball, 'move',
               interpreter.createNativeFunction(wrapper));
             };
     var myInterpreter = new Interpreter(code, initFunc);

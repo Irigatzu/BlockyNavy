@@ -11,21 +11,23 @@ const GAME_WIDTH = 600;
 const GAME_HEIGTH = 600;
 
 var gameState ="PLAY";
+var level="1";
         
-        const realPlayer = new Player(200, 200,playerImage );
-        const enemyPlayer =new Player(300,200,enemyImage);
-        var ball=new Ball(realPlayer);
+ const realPlayer = new Player(200, 200,playerImage );
+ const enemyPlayer =new Player(300,200,enemyImage);
+var playerBall=new Ball(realPlayer);
         
         
 var lastTime = 0;
 function colision(ball,player,healthbar){
-    if(ball.getPositionX()==player.getPositionX()||ball.getPositionY()==player.getPositionY()){
+    if(ball.getPositionX()==player.getPositionX()&&ball.getPositionY()==player.getPositionY()){
         ball.reset();
         hit(healthbar);
     }
 }
 
 function gameLoop(timestamp) {
+   if(level=="1"){
     if(gameState=="PLAY"){
       var deltaTime = timestamp - lastTime;
       lastTime = timestamp;
@@ -35,19 +37,21 @@ function gameLoop(timestamp) {
      enemyPlayer.update(deltaTime);
      enemyPlayer.draw(ctx);
      enemyPlayer.move(0,20);
-     ball.update(deltaTime);
-     ball.draw(ctx);
-     ball.move(0,300);
-     colision(ball,enemyPlayer,enemyHealthBar);
+     playerBall.update(deltaTime);
+     playerBall.draw(ctx);
+     colision(playerBall,enemyPlayer,enemyHealthBar);
       requestAnimationFrame(gameLoop);
+      console.log(enemyHealthBar.health);
       
       }
       else{ 
       realPlayer.restart(realPlayer,200,200);
-      enemyPlayer.restart(enemyPlayer,300,300);
+      enemyPlayer.restart(enemyPlayer,400,200);
+
       gameState="PLAY";
       return;
       }
+    }
 }
 
 

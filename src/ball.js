@@ -67,6 +67,7 @@
             ) {
               this.speed.x = 0;
               this.speed.y = 0;
+              this.reset();
             } else {
               this.position.x += this.speed.x;
               this.position.y += this.speed.y;
