@@ -18,10 +18,7 @@
       font-weight: normal;
       font-size: 140%;
     }
-    #gameScreen {
-        border: 1px solid black;
-        background-color: aquamarine;
-      }
+    
       #blocklyDiv{
       position: absolute ;
       top: 8px;
@@ -32,21 +29,24 @@
       img {
        display:none
       }
-      #codeSsow{
-            position:absolute;
-            top: 600px;
-            left: 680px;
+      #gameScreen {
+        border: 1px solid black;
+        background-color: aquamarine;
       }
+      
       #healthCanvas{
             position: absolute ;
             top: 650px;
             left: 0px;
       }
+      
   </style>
 </head>
 <body>
+
+  
     <img id="img_boat" src="Assets/ship1.png" />
-    <img id ="enemy_boat" src="Assets/EnemyShip.png"/>
+    <img id ="enemy_boat" src="Assets/EnemyShipLeft.png"/>
     <img id ="ballImage" src="Assets/ball.png"/>
     
     <canvas id="gameScreen" float ="left" width="600" height="600"></canvas>
@@ -61,8 +61,10 @@
     <button id="play1" onclick="showCode()">Show the code</button>
     <button id="codeShow" onclick="runCode()">Play</button>
     <button id="restart" onclick="restart()">Restart</button>
+    <button id="NextLVL" onclick="NextLVL()">Next Level</button>
+    <button id="PreviousLVL" onclick="PreviousLVL()">Previous Level</button>
   </p>
-
+  
   <div id="blocklyDiv" style="height: 480px; width: 600px;"></div>
 
   <xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none">
@@ -70,6 +72,13 @@
                     <block type="controls_whileUntil">
                       <field name="MODE">WHILE</field>
                     </block>
+                    <block type="controls_repeat_ext">
+                    <value name="TIMES">
+                      <shadow type="math_number">
+                        <field name="NUM">10</field>
+                      </shadow>
+                    </value>
+                  </block>
                   </category>
                   <category name="Logic">
                     <block type="controls_if"></block>
@@ -115,8 +124,9 @@
 
     function runCode() {
       // Generate JavaScript code and run it.
+      gameState="PLAY";
       window.LoopTrap = 1000;
-      Blockly.JavaScript.INFINITE_LOOP_TRAP =
+      Blockly.JavaScript.INFINITE_LOOP_TRAP = 0 ;
           'if (--window.LoopTrap == 0) throw "Infinite loop.";\n';
       var code = Blockly.JavaScript.workspaceToCode(demoWorkspace);
       Blockly.JavaScript.INFINITE_LOOP_TRAP = 10;
@@ -138,29 +148,60 @@
           var wrapper = function move(angle,distance) {
             return realPlayer.move(angle,distance);
           };
-          var wrapper = function move(angle,distance) {
-            return playerBall.move(angle,distance);
-          };
+          
           interpreter.setProperty(player, 'move',
               interpreter.createNativeFunction(wrapper));
+          var wrapper = function shoot(angle,distance) {
+            return playerBall.move(angle,distance);
+          };
           interpreter.setProperty(ball, 'move',
               interpreter.createNativeFunction(wrapper));
             };
-    var myInterpreter = new Interpreter(code, initFunc);
+        var myInterpreter = new Interpreter(code, initFunc);
     
-      try {
+          try {
 
       
-     myInterpreter.run();
+         myInterpreter.run();
       
-      } catch (e) {
-        alert(e);
-      }
+          } catch (e) {
+            alert(e);
+          }
     }
     function restart(){
        gameState="STOP";
-       gameLoop(0);
-       
+    }
+    function NextLVL(){
+        if(level<=4){
+          level= level+1;
+          realPlayer.restart(realPlayer,100,200);
+          enemyPlayer.restart(enemyPlayer,300,200);
+          playerBall.reset(realPlayer);
+          playerHealthBar.reset();
+          enemyHealthBar.reset();
+        }
+   
+           
+        
+    }
+     function PreviousLVL(){
+        if(level>2){
+            level= level-1;
+            realPlayer.restart(realPlayer,100,200);
+            enemyPlayer.restart(enemyPlayer,300,200);
+            playerBall.reset(realPlayer);
+            playerHealthBar.reset();
+            enemyHealthBar.reset();
+        }else if(level=2){
+            level= level-1;
+            realPlayer.restart(realPlayer,100,200);
+            enemyPlayer.restart(enemyPlayer,300,200);
+            playerBall.reset(realPlayer);
+            playerHealthBar.reset();
+            enemyHealthBar.reset();
+            enemyHealthBar.updateHealth(90);
+      
+        }
     }
   </script>
 

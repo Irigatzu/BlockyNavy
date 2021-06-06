@@ -10,12 +10,14 @@ ctx.fillRect(0, 0, 600, 600);
 const GAME_WIDTH = 600;
 const GAME_HEIGTH = 600;
 
-var gameState ="PLAY";
-var level="1";
+var gameState ="";
+var level=1;
+
         
- const realPlayer = new Player(100, 200,playerImage );
- const enemyPlayer =new Player(300,200,enemyImage);
+const realPlayer = new Player(100, 200,playerImage );
+const enemyPlayer =new Player(300,200,enemyImage);
 var playerBall=new Ball(realPlayer);
+var enemyBall=new Ball(enemyPlayer);
         
         
 var lastTime = 0;
@@ -29,99 +31,188 @@ function colision(ball,player,healthbar){
     }
 }
     
-
- if(level=="1"){
-          enemyHealthBar.updateHealth(90);
-          
-   }
+if(level==1){
+    enemyHealthBar.updateHealth(90);
+}
+ 
+   gameLoop();
 function gameLoop(timestamp) {
 console.log(level);
-   if(level=="1"){
+
+   if(level==1){
+   
   
-    if(gameState=="PLAY"){
-      var deltaTime = timestamp - lastTime;
-      lastTime = timestamp;
-      ctx.clearRect(0, 0, GAME_WIDTH, GAME_HEIGTH);
-      realPlayer.update(deltaTime);
-      realPlayer.draw(ctx);
+    
+    var deltaTime = timestamp - lastTime;
+    lastTime = timestamp;
+    ctx.clearRect(0, 0, GAME_WIDTH, GAME_HEIGTH);
+    realPlayer.update(deltaTime);
+    realPlayer.draw(ctx);
+    enemyPlayer.update(deltaTime);
+    enemyPlayer.draw(ctx);
+     
+     
+    playerBall.update(deltaTime);
+    playerBall.draw(ctx);
+    colision(playerBall,enemyPlayer,enemyHealthBar);
+    requestAnimationFrame(gameLoop);
+     
+      
+      if(enemyHealthBar.health==0){
+            alert("Level 1 Completed");
+                level=2;
+                gameState="STOP";
+            }
+     
+      
+      
+          if (gameState=="STOP"){ 
+              realPlayer.restart(realPlayer,100,200);
+              enemyPlayer.restart(enemyPlayer,300,200);
+              playerBall.reset(realPlayer);
+              }
+    }
+    if (level==2){
+        
+        var deltaTime = timestamp - lastTime;
+        lastTime = timestamp;
+        ctx.clearRect(0, 0, GAME_WIDTH, GAME_HEIGTH);
+        realPlayer.update(deltaTime);
+        realPlayer.draw(ctx);
+        enemyPlayer.update(deltaTime);
+        enemyPlayer.draw(ctx);
+        playerBall.update(deltaTime);
+        playerBall.draw(ctx);
+        colision(playerBall,enemyPlayer,playerHealthBar);
+        requestAnimationFrame(gameLoop);
+              if(gameState=="PLAY"){
+              enemyPlayer.move(180,300);
+              var d=new Date();
+
+              console.log(d.getSeconds());
+
+                }
+            if(gameState=="STOP"){
+            realPlayer.restart(realPlayer,100,200);
+            enemyPlayer.restart(enemyPlayer,300,200);
+            playerBall.reset(realPlayer);
+            enemyHealthBar.reset();
+            playerHealthBar.reset();
+            }
+        }
+    if(level==3){
+   
+  
+    
+    var deltaTime = timestamp - lastTime;
+    lastTime = timestamp;
+    ctx.clearRect(0, 0, GAME_WIDTH, GAME_HEIGTH);
+    realPlayer.update(deltaTime);
+    realPlayer.draw(ctx);
+    enemyPlayer.update(deltaTime);
+    enemyPlayer.draw(ctx);
+     
+     
+    playerBall.update(deltaTime);
+    playerBall.draw(ctx);
+    colision(playerBall,enemyPlayer,enemyHealthBar);
+    requestAnimationFrame(gameLoop);
+     
+      
+      if(enemyHealthBar.health==0){
+            alert("Level 3 Completed");
+                level=4;
+                gameState="STOP";
+            }
+     
+      
+      
+          if (gameState=="STOP"){ 
+              realPlayer.restart(realPlayer,100,200);
+              enemyPlayer.restart(enemyPlayer,300,200);
+              playerBall.reset(realPlayer);
+              
+              }
+    }
+
+    if(level==4){
+     
+      
+     var deltaTime = timestamp - lastTime;
+     lastTime = timestamp;
+     ctx.clearRect(0, 0, GAME_WIDTH, GAME_HEIGTH);
+     realPlayer.update(deltaTime);
+     realPlayer.draw(ctx);
      enemyPlayer.update(deltaTime);
      enemyPlayer.draw(ctx);
      
      
      playerBall.update(deltaTime);
      playerBall.draw(ctx);
+
      colision(playerBall,enemyPlayer,enemyHealthBar);
-      requestAnimationFrame(gameLoop);
+     requestAnimationFrame(gameLoop);
+      if(gameState=="PLAY"){
+          enemyPlayer.move(0,100);
+          }
       
       if(enemyHealthBar.health==0){
-        alert("Level Completed");
-            level="2";
-      }else if (playerHealthBar.health==0){
-      
-      }
+        alert("Level 4 Completed");
+        level=5;
+        gameState="STOP";
+        }
      
       
-      }
-      else{ 
-      realPlayer.restart(realPlayer,100,200);
-      enemyPlayer.restart(enemyPlayer,300,200);
-      playerBall.reset(realPlayer);
- 
-
-      gameState="PLAY";
-      return;
-      }
+      
+      if(gameState=="STOP"){
+          realPlayer.restart(realPlayer,100,200);
+          enemyPlayer.restart(enemyPlayer,300,200);
+          playerBall.reset(realPlayer);
+          playerHealthBar.reset();
+          enemyHealthBar.reset();
+          }
     }
-    if(level=="2"){
-  
-    if(gameState=="PLAY"){
-     realPlayer.restart(realPlayer,100,200);
-      enemyPlayer.restart(enemyPlayer,300,200);
-      playerBall.reset(realPlayer);
-      playerHealthBar.reset();
-      enemyHealthBar.reset();
-      var deltaTime = timestamp - lastTime;
-      lastTime = timestamp;
-      ctx.clearRect(0, 0, GAME_WIDTH, GAME_HEIGTH);
-      realPlayer.update(deltaTime);
-      realPlayer.draw(ctx);
-     enemyPlayer.update(deltaTime);
-     enemyPlayer.draw(ctx);
+    if (level==5){
+        var deltaTime = timestamp - lastTime;
+         lastTime = timestamp;
+         ctx.clearRect(0, 0, GAME_WIDTH, GAME_HEIGTH);
+         realPlayer.update(deltaTime);
+         realPlayer.draw(ctx);
+         enemyPlayer.update(deltaTime);
+         enemyPlayer.draw(ctx);
      
      
-     playerBall.update(deltaTime);
-     playerBall.draw(ctx);
-     colision(playerBall,enemyPlayer,enemyHealthBar);
-      requestAnimationFrame(gameLoop);
-      
-      if(enemyHealthBar.health==0){
-        alert("Level Completed");
-            level="3";
-      }else if (playerHealthBar.health==0){
-      
-      }
-     
-      
-      }
-      else{ 
-      realPlayer.restart(realPlayer,100,200);
-      enemyPlayer.restart(enemyPlayer,300,200);
-      playerBall.reset(realPlayer);
-      playerHealthBar.reset();
-      enemyHealthBar.reset();
-
-      gameState="PLAY";
-      return;
-      }
-      
-    }
+         playerBall.update(deltaTime);
+         playerBall.draw(ctx);
+         enemyBall.update(deltaTime);
+         enemyBall.draw(ctx);
+         colision(playerBall,enemyPlayer,enemyHealthBar);
+         colision(enemyBall,realPlayer,playerHealthBar);
+         requestAnimationFrame(gameLoop);
+        }
+        if(gameState=="PLAY"){
+            enemyBall.move(180,300);
+            if(enemyHealthBar.health==0){
+                alert("Level 5 Completed");
+                gameState="STOP";
+            }
+            if(playerHealthBar.health==0){
+                alert("Game Over");
+                gameState="STOP";
+                
+            }
+        }
+        
+        if(gameState=="STOP"){
+          realPlayer.restart(realPlayer,100,200);
+          enemyPlayer.restart(enemyPlayer,300,200);
+          playerBall.reset(realPlayer);
+          enemyBall.reset(enemyPlayer);
+          playerHealthBar.reset();
+          enemyHealthBar.reset();
+          }
+          console.log(gameState);
 
     
 }
 console.log(enemyPlayer);
-
-
-
-
-
-      gameLoop();

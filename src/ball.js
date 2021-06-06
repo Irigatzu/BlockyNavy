@@ -4,7 +4,7 @@
                this.image=ballImage;
                this.width = 0;
                 this.height = 0;
-                this.maxSpeed = 1;
+                this.maxSpeed = 3;
                 this.position = {
                  x:player.position.x+30,
                   y:player.position.y+30
@@ -78,7 +78,7 @@
                this.image=ballImage;
                 this.width = 0;
                 this.height = 0;
-                this.maxSpeed = 1;
+                this.maxSpeed = 3;
                 this.position = {
                  x:this.player.getPositionX()+30,
                   y:this.player.getPositionY()+30
