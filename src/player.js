@@ -3,7 +3,8 @@ class Player {
             this.image = image
             this.width = 80;
             this.height = 80;
-            this.maxSpeed = 2;
+            this.maxSpeed = 1;
+            
             
             
             this.position = {
@@ -31,17 +32,14 @@ class Player {
             var pi = Math.PI;
             this.finalpos.x = this.startpos.x + Math.cos(angle * (pi / 180)) *distance;
             this.finalpos.y = this.startpos.y +Math.sin(angle * -(pi / 180)) *distance;
-           
-           
             
-            
-            if(this.position.x!=this.finalpos.x||this.position.y!=this.finalpos.y){
             this.speed.x = Math.cos(angle * (pi / 180)) * this.maxSpeed;
             this.speed.y = Math.sin(angle * -(pi / 180)) * this.maxSpeed;
-             }else{
-             this.speed.x=0;
-             this.speed.y=0;
-             }
+
+            
+            
+            
+            
                 
            
           }
@@ -49,7 +47,7 @@ class Player {
               this.image = player.image;
                 this.width = 80;
                 this.height = 80;
-                this.maxSpeed = 2;
+                this.maxSpeed = 1;
             
             
                 this.position = {
@@ -83,17 +81,26 @@ class Player {
           }
           update(deltaTime) {
             if (
-              this.position.x >= 530 ||
-              this.position.y >= 530 ||
+              (this.position.x +1 > this.finalpos.x &&
+              this.position.x <this.finalpos.x +1 &&
+              this.position.y < this.finalpos.y +1 &&
+              this.position.y + 1 > this.finalpos.y)
+              ||
+              (this.position.x >= 530 ||
+              this.position.y >= 530||
               this.position.x <= 30 ||
-              this.position.y <= 30
+              this.position.y <= 30 )
             ) {
               this.speed.x = 0;
               this.speed.y = 0;
+              
             } else {
               this.position.x += this.speed.x;
               this.position.y += this.speed.y;
+             
             }
+            
+
            
            
           }

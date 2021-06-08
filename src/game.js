@@ -13,6 +13,8 @@ const GAME_HEIGTH = 600;
 var gameState ="";
 var level=1;
 
+var s;
+
         
 const realPlayer = new Player(100, 200,playerImage );
 const enemyPlayer =new Player(300,200,enemyImage);
@@ -23,13 +25,20 @@ var enemyBall=new Ball(enemyPlayer);
 var lastTime = 0;
 function colision(ball,player,healthbar){
     if(ball.getPositionX() < player.getPositionX() + 80 &&
-   ball.getPositionX() + 10 > player.getPositionX() &&
-   ball.getPositionY() < player.getPositionY() + 80 &&
-   ball.getPositionY() + 10 > player.getPositionY()){
-        ball.reset();
-        hit(healthbar);
+       ball.getPositionX() + 10 > player.getPositionX() &&
+       ball.getPositionY() < player.getPositionY() + 80 &&
+       ball.getPositionY() + 10 > player.getPositionY()){
+       if(ball.reps>1){
+       ball.reshoot();
+       hit(healthbar);
+       }else{
+           ball.reset();
+           hit(healthbar);
+       }
     }
 }
+
+
     
 if(level==1){
     enemyHealthBar.updateHealth(90);
@@ -37,7 +46,7 @@ if(level==1){
  
    gameLoop();
 function gameLoop(timestamp) {
-console.log(level);
+
 
    if(level==1){
    
@@ -56,6 +65,13 @@ console.log(level);
     playerBall.draw(ctx);
     colision(playerBall,enemyPlayer,enemyHealthBar);
     requestAnimationFrame(gameLoop);
+        if(gameState=="PLAY"){
+        
+       console.log(playerBall.reps);
+        
+        
+            
+        }
      
       
       if(enemyHealthBar.health==0){
@@ -68,7 +84,7 @@ console.log(level);
       
           if (gameState=="STOP"){ 
               realPlayer.restart(realPlayer,100,200);
-              enemyPlayer.restart(enemyPlayer,300,200);
+              
               playerBall.reset(realPlayer);
               }
     }
@@ -87,9 +103,22 @@ console.log(level);
         requestAnimationFrame(gameLoop);
               if(gameState=="PLAY"){
               enemyPlayer.move(180,300);
-              var d=new Date();
+             var d= new Date();
+              var s=d.getSeconds();
 
-              console.log(d.getSeconds());
+              
+              if(s%2==0){
+                    enemyHealthBar.updateHealth(0.5);
+              }
+              if(enemyHealthBar.health==0){
+                    alert("Level 2 Completed")
+                    level=3;
+                    gameState="STOP";
+              }
+              
+             
+
+              
 
                 }
             if(gameState=="STOP"){
@@ -211,8 +240,8 @@ console.log(level);
           playerHealthBar.reset();
           enemyHealthBar.reset();
           }
-          console.log(gameState);
+          
 
     
 }
-console.log(enemyPlayer);
+

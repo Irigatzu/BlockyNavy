@@ -126,7 +126,7 @@
       // Generate JavaScript code and run it.
       gameState="PLAY";
       window.LoopTrap = 1000;
-      Blockly.JavaScript.INFINITE_LOOP_TRAP = 0 ;
+      
           'if (--window.LoopTrap == 0) throw "Infinite loop.";\n';
       var code = Blockly.JavaScript.workspaceToCode(demoWorkspace);
       Blockly.JavaScript.INFINITE_LOOP_TRAP = 10;
@@ -137,6 +137,7 @@
           var ball = interpreter.nativeToPseudo({});
           interpreter.setProperty(globalObject, 'player', player);
           interpreter.setProperty(globalObject, 'ball', ball);
+          interpreter.setProperty(globalObject,"text",String);
 
           // Define 'player.angle' and distance property.
           interpreter.setProperty(player, 'angle', 360);
@@ -151,11 +152,22 @@
           
           interpreter.setProperty(player, 'move',
               interpreter.createNativeFunction(wrapper));
+
+
           var wrapper = function shoot(angle,distance) {
-            return playerBall.move(angle,distance);
+            return playerBall.shoot(angle,distance);
           };
+
           interpreter.setProperty(ball, 'move',
               interpreter.createNativeFunction(wrapper));
+
+          var wrapper = function radar(text){
+                return window.alert(text);
+          };
+
+          interpreter.setProperty(globalObject, 'radar',
+              interpreter.createNativeFunction(wrapper));
+
             };
         var myInterpreter = new Interpreter(code, initFunc);
     

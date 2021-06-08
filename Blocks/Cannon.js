@@ -4,7 +4,7 @@ Blockly.Blocks['Cannon'] = {
         .appendField("Cannon(")
         .appendField(new Blockly.FieldAngle(90), "Angle")
         .appendField(",")
-        .appendField(new Blockly.FieldNumber(0, 0, 100), "Distance")
+        .appendField(new Blockly.FieldNumber(0, 0, 200), "Distance")
         .appendField(")");
     this.appendDummyInput();
     this.setPreviousStatement(true, null);

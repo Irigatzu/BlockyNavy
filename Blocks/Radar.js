@@ -15,6 +15,6 @@ Blockly.JavaScript['Radar'] = function(block) {
   var angle_angle = block.getFieldValue('Angle');
   var value_move = Blockly.JavaScript.valueToCode(block, 'Radar', Blockly.JavaScript.ORDER_ATOMIC);
   // TODO: Assemble JavaScript into code variable.
-  var code = 'radar()';
+  var code = 'radar('+angle_angle+')';
   return code;
 };
