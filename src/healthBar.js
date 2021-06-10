@@ -22,9 +22,15 @@ class HealthBar {
 		this.w=(this.health/this.maxhealth)*this.maxWidth
 		}
 	
-	}reset(){
+	}reset(hp){
+		if(hp>0){
+			this.health=hp;
+			this.w=(this.health/this.maxhealth)*this.maxWidth
+
+		}else{
 		this.health=this.maxhealth;
-		this.w=(this.health/this.maxhealth)*this.maxWidth
+		this.w=(this.health/this.maxhealth)*this.maxWidth;
+		}
 
 	}
 }

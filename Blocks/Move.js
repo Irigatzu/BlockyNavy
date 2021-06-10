@@ -5,7 +5,7 @@ Blockly.Blocks['Move'] = {
         .appendField("Move (")
         .appendField(new Blockly.FieldAngle(90), "Angle")
         .appendField(",")
-        .appendField(new Blockly.FieldNumber(0, 0, 300), "Distance")
+        .appendField(new Blockly.FieldNumber(0, 0, 600), "Distance")
         .appendField(")");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);

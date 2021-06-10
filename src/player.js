@@ -4,6 +4,7 @@ class Player {
             this.width = 80;
             this.height = 80;
             this.maxSpeed = 1;
+            this.fireImage=document.getElementById("fire");
             
             
             
@@ -30,6 +31,16 @@ class Player {
           }
           move(angle, distance) {
             var pi = Math.PI;
+            if(angle>225 && angle<315){
+                this.image=document.getElementById("playerDown");
+            }
+            if (angle>45 && angle<135){
+                this.image=document.getElementById("playerUp");
+            }if(angle>135 && angle<225){
+                this.image=document.getElementById("enemyLeft");
+            }if(angle>315||angle<45){
+                this.image=document.getElementById("enemyRight");
+            }
             this.finalpos.x = this.startpos.x + Math.cos(angle * (pi / 180)) *distance;
             this.finalpos.y = this.startpos.y +Math.sin(angle * -(pi / 180)) *distance;
             
@@ -79,6 +90,15 @@ class Player {
               this.width
             );
           }
+          burn(ctx,ms){
+              if(ms<=500){
+              this.fireImage=document.getElementById("fire2")
+              }
+              if(ms>500){
+                this.fireImage=document.getElementById("fire")
+              }
+               ctx.drawImage(this.fireImage,this.position.x+20,this.position.y+15,40,40);
+              }
           update(deltaTime) {
             if (
               (this.position.x +1 > this.finalpos.x &&
@@ -86,10 +106,10 @@ class Player {
               this.position.y < this.finalpos.y +1 &&
               this.position.y + 1 > this.finalpos.y)
               ||
-              (this.position.x >= 530 ||
-              this.position.y >= 530||
-              this.position.x <= 30 ||
-              this.position.y <= 30 )
+              (this.position.x >= 560 ||
+              this.position.y >= 560||
+              this.position.x <= 0 ||
+              this.position.y <= 0 )
             ) {
               this.speed.x = 0;
               this.speed.y = 0;

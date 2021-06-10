@@ -8,6 +8,7 @@
                 this.reps=0;
                this.angle=0;
                this.distance=0;
+               this.maxRange=false;
                 this.position = {
                  x:player.position.x+30,
                   y:player.position.y+30
@@ -34,9 +35,14 @@
             this.width=10;
             this.height=10;
             this.angle=angle;
+            if(this.maxRange==false){
             this.distance=distance;
-            this.finalpos.x = this.startpos.x + Math.cos(angle * (pi / 180)) *distance;
-            this.finalpos.y = this.startpos.y +Math.sin(angle * -(pi / 180)) *distance;
+            }else{
+                this.distance=500;
+            }
+            
+            this.finalpos.x = this.startpos.x + Math.cos(angle * (pi / 180)) *this.distance;
+            this.finalpos.y = this.startpos.y +Math.sin(angle * -(pi / 180)) *this.distance;
             
             this.speed.x = Math.cos(angle * (pi / 180)) * this.maxSpeed;
             this.speed.y = Math.sin(angle * -(pi / 180)) * this.maxSpeed;
@@ -91,6 +97,7 @@
             this.width = 0;
             this.height = 0;
             this.maxSpeed = 2;
+            
             this.position = {
                 x:this.player.getPositionX()+30,
                 y:this.player.getPositionY()+30
@@ -127,6 +134,19 @@
          shoot(angle,distance){
            this.reps+=1;
            this.move(angle,distance);
+         }
+         radar(angle){
+             if(angle==0||angle==315||angle==30){
+                  this.maxRange=true;
+                  }
+         }
+         getFinalX(){
+              return this.finalpos.x;
+         }
+         getFinalY(){
+              return this.finalpos.y;
+         }getMaxRange(){
+              return this.maxRange;
          }
            
    }

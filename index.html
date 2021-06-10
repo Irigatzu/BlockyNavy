@@ -45,9 +45,20 @@
 <body>
 
   
-    <img id="img_boat" src="Assets/ship1.png" />
-    <img id ="enemy_boat" src="Assets/EnemyShipLeft.png"/>
+    <img id="playerUp" src="Assets/PlayerUp.png" />
+    <img id="playerDown" src="Assets/PlayerDown.png" />
+    <img id ="enemyLeft" src="Assets/EnemyShipLeft.png"/>
+    <img id ="enemyRight" src="Assets/EnemyShipRight.png"/>
+    <img id ="enemyStart" src="Assets/EnemyStart.png"/>
     <img id ="ballImage" src="Assets/ball.png"/>
+    <img id="lvlImage" src="Assets/label.jpeg"/>
+    <img id="1Image" src="Assets/1.jpeg"/>
+    <img id="2Image" src="Assets/2.jpeg"/>
+    <img id="3Image" src="Assets/3.jpeg"/>
+    <img id="4Image" src="Assets/4.jpeg"/>
+    <img id="5Image" src="Assets/5.jpeg"/>
+    <img id="fire" src="Assets/fire.png"/>
+    <img id="fire2" src="Assets/fireVuelta.png"/>
     
     <canvas id="gameScreen" float ="left" width="600" height="600"></canvas>
     <canvas id ="healthCanvas" width= "600" height="400"></canvas>
@@ -125,11 +136,11 @@
     function runCode() {
       // Generate JavaScript code and run it.
       gameState="PLAY";
-      window.LoopTrap = 1000;
+     
       
           'if (--window.LoopTrap == 0) throw "Infinite loop.";\n';
       var code = Blockly.JavaScript.workspaceToCode(demoWorkspace);
-      Blockly.JavaScript.INFINITE_LOOP_TRAP = 10;
+      Blockly.JavaScript.INFINITE_LOOP_TRAP = 0;
        //var code = 'player.move(0,100)';
             var initFunc = function(interpreter, globalObject) {
           // Create 'robot' global object.
@@ -143,7 +154,7 @@
           interpreter.setProperty(player, 'angle', 360);
           interpreter.setProperty(player, 'distance', 200);
           interpreter.setProperty(ball, 'angle', 360);
-          interpreter.setProperty(ball, 'distance', 200);
+          interpreter.setProperty(ball, 'distance', 400);
 
           // Define 'robot.forwards' function.
           var wrapper = function move(angle,distance) {
@@ -162,7 +173,7 @@
               interpreter.createNativeFunction(wrapper));
 
           var wrapper = function radar(text){
-                return window.alert(text);
+                return playerBall.radar(text);
           };
 
           interpreter.setProperty(globalObject, 'radar',
